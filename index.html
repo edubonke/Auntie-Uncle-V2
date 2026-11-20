@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FAF8F5">
+  <meta name="description" content="Explore Auntie & Uncle, a proposed South African marketplace for independent household helpers. Browse illustrative profiles, prepare booking requests, or preview a helper application.">
+  <meta property="og:title" content="Auntie & Uncle | Good help is closer than you think">
+  <meta property="og:description" content="A space for South African households and independent helpers to find each other.">
+  <title>Auntie & Uncle | Find the right helping hand</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="phase4.css">
+  <link rel="stylesheet" href="phase5.css">
+  <link rel="stylesheet" href="phase5b.css">
+  <link rel="stylesheet" href="redesign.css">
+  <script src="app.js" defer></script>
+  <script src="redesign.js" defer></script>
+  <script type="module" src="backend.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Auntie and Uncle, home">
+        <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 50 50" fill="none"><path d="m8 27 17-15 17 15v15H8V27Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M20 42V29h10v13" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M37 8c-3-1-7 2-7 6 4 0 7-2 7-6Z" fill="currentColor"/></svg></span>
+        <span class="brand-name">auntie <span>&</span> uncle<small>YOUR HOME. YOUR PEOPLE.</small></span>
+      </a>
+      <button class="mobile-toggle" id="menu-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <nav class="main-nav" id="primary-nav" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#browse">Helper directory</a><a href="#fair-wage">Fair wage &amp; trust</a><a href="#how-it-works">How it works</a>
+        <button class="atmosphere-button" type="button" id="palette-open">◈ Atmosphere</button>
+        <a class="account-link" href="#account">My account</a><a href="#join">Join as helper</a>
+        <a class="nav-cta" href="#browse">Find a helper <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <dialog id="palette-dialog" aria-labelledby="palette-title" class="palette-dialog">
+    <div class="dialog-top"><p class="kicker">CUSTOMISE YOUR EXPERIENCE</p><button type="button" class="icon-close" id="palette-close" aria-label="Close atmosphere settings">×</button></div>
+    <h2 id="palette-title">Choose your <em>atmosphere.</em></h2><p>Inspired by South African landscapes. Changes apply only to this device.</p>
+    <div class="palette-options" role="group" aria-label="Colour palette">
+      <button type="button" data-theme="protea" aria-pressed="true"><span class="palette-swatch swatch-protea"></span><strong>Warm Protea</strong><small>Soft terracotta &amp; cream</small></button>
+      <button type="button" data-theme="highveld" aria-pressed="false"><span class="palette-swatch swatch-highveld"></span><strong>Highveld Ochre</strong><small>Golden Johannesburg sunsets</small></button>
+      <button type="button" data-theme="jacaranda" aria-pressed="false"><span class="palette-swatch swatch-jacaranda"></span><strong>Jacaranda Bloom</strong><small>Pretoria’s purple canopies</small></button>
+      <button type="button" data-theme="tablemountain" aria-pressed="false"><span class="palette-swatch swatch-tablemountain"></span><strong>Table Mountain Sage</strong><small>Cape fynbos greenery</small></button>
+      <button type="button" data-theme="obsidian" aria-pressed="false"><span class="palette-swatch swatch-obsidian"></span><strong>Karoo Obsidian</strong><small>Brass &amp; night skies</small></button>
+    </div>
+  </dialog>
+  <main id="main">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-star" aria-hidden="true">✳</span> SOUTH AFRICA’S HOUSEHOLD HELPER MARKETPLACE</div>
+        <h1 id="hero-title">The right help for <em>everyday life.</em></h1>
+        <p class="hero-description">Connect directly with independent cleaners, childcare companions, home cooks, gardeners and handymen. Find help that fits your household and your schedule.</p>
+        <div class="hero-discovery">
+          <form id="hero-search" class="hero-search">
+            <div class="field"><label for="hero-service">I need help with</label><select id="hero-service"><option value="all">All 6 household services</option><option>Cleaning</option><option>Childcare</option><option>Cooking</option><option>Gardening</option><option>Handyman</option><option>Moving &amp; rearranging</option></select></div>
+            <div class="field"><label for="hero-location">Location or suburb</label><input type="search" id="hero-location" placeholder="e.g. Randburg" maxlength="80"></div>
+            <button type="submit" class="button button-dark">Search <span aria-hidden="true">↗</span></button>
+          </form>
+          <div class="popular-suburbs"><span>Popular:</span><button type="button" data-suburb="Sandton">Sandton</button><button type="button" data-suburb="Randburg">Randburg</button><button type="button" data-suburb="Soweto">Soweto</button><button type="button" data-suburb="Pretoria">Pretoria</button><button type="button" data-suburb="Midrand">Midrand</button><button type="button" data-suburb="Rosebank">Rosebank</button></div>
+        </div>
+        <div class="hero-metrics"><div><strong>6</strong><span>Household services</span></div><div><strong>Direct</strong><span>Helper agreements</span></div><div><strong>Your choice</strong><span>Flexible requests</span></div></div>
+      </div>
+      <div class="hero-art">
+        <figure class="hero-photo"><img src="assets/hero_household_care_1794245337497.jpg" alt="A bright, welcoming home with natural plants and comfortable furniture" fetchpriority="high"><figcaption><span>THE AUNTIE &amp; UNCLE PROMISE</span><strong>Dignified work, peaceful homes.</strong></figcaption></figure>
+        <div class="float-card float-card-one"><span class="float-icon" aria-hidden="true">✓</span><span><b>Approved directory</b><small>Independent helper listings</small></span></div>
+        <div class="float-card float-card-two"><span class="float-icon" aria-hidden="true">♥</span><span><b>Fair pay &amp; trust</b><small>Agree on rates directly</small></span></div>
+      </div>
+    </section>
+
+    <section class="trust-band" aria-label="Our approach"><div class="shell trust-inner"><span>THE AUNTIE & UNCLE WAY</span><span><b>01.</b> Explore independent helpers</span><span><b>02.</b> Compare profiles & service areas</span><span><b>03.</b> Request a booking</span></div></section>
+
+    <section id="services" class="section shell services-section" aria-labelledby="services-heading">
+      <div class="section-head"><div><p class="kicker">SIX WAYS TO GET THINGS DONE</p><h2 id="services-heading">The right help for <em>everyday life.</em></h2></div><p>Browse the type of service you need, then discover example independent helper profiles below.</p></div>
+      <div class="filters" role="group" aria-label="Filter services"><button type="button" class="filter active" data-filter="all" aria-pressed="true">All services <span>06</span></button><button type="button" class="filter" data-filter="home" aria-pressed="false">Home care</button><button type="button" class="filter" data-filter="family" aria-pressed="false">Family & food</button><button type="button" class="filter" data-filter="projects" aria-pressed="false">Home projects</button></div>
+      <div class="services-grid" id="service-grid">
+        <article class="service-card" data-category="home"><div class="service-art art-cleaning"><img src="assets/cleaning.svg" alt="" loading="lazy"><span class="art-ribbon">A fresher space</span></div><div class="service-body"><div class="service-number">01 / HOME CARE</div><h3>Cleaning</h3><p>Routine cleaning, deeper refreshes and help getting your home back in order.</p><button type="button" class="service-link" data-service="Cleaning">Browse cleaning helpers <span aria-hidden="true">↗</span></button></div></article>
+        <article class="service-card" data-category="family"><div class="service-art art-childcare"><img src="assets/childcare.svg" alt="" loading="lazy"><span class="art-ribbon">An extra pair of hands</span></div><div class="service-body"><div class="service-number">02 / FAMILY & FOOD</div><h3>Childcare</h3><p>Discuss your family's childcare needs, routines and preferred schedule.</p><button type="button" class="service-link" data-service="Childcare">Browse childcare helpers <span aria-hidden="true">↗</span></button></div></article>
+        <article class="service-card" data-category="family"><div class="service-art art-cooking"><img src="assets/cooking.svg" alt="" loading="lazy"><span class="art-ribbon">Made with care</span></div><div class="service-body"><div class="service-number">03 / FAMILY & FOOD</div><h3>Cooking</h3><p>Meal preparation for ordinary weekdays, special occasions and busy homes.</p><button type="button" class="service-link" data-service="Cooking">Browse cooking helpers <span aria-hidden="true">↗</span></button></div></article>
+        <article class="service-card" data-category="home"><div class="service-art art-garden"><img src="assets/garden.svg" alt="" loading="lazy"><span class="art-ribbon">A greener outside</span></div><div class="service-body"><div class="service-number">04 / HOME CARE</div><h3>Gardening</h3><p>Garden upkeep, tidying and seasonal outdoor care for your space.</p><button type="button" class="service-link" data-service="Gardening">Browse gardening helpers <span aria-hidden="true">↗</span></button></div></article>
+        <article class="service-card" data-category="projects"><div class="service-art art-handy"><img src="assets/handy.svg" alt="" loading="lazy"><span class="art-ribbon">Little things fixed</span></div><div class="service-body"><div class="service-number">05 / HOME PROJECTS</div><h3>Handyman</h3><p>Minor household repairs, assembly and general maintenance requests.</p><button type="button" class="service-link" data-service="Handyman">Browse handyman helpers <span aria-hidden="true">↗</span></button></div></article>
+        <article class="service-card" data-category="projects"><div class="service-art art-moving"><img src="assets/moving.svg" alt="" loading="lazy"><span class="art-ribbon">Ready for a fresh start</span></div><div class="service-body"><div class="service-number">06 / HOME PROJECTS</div><h3>Moving & rearranging</h3><p>Help with packing, arranging furniture and making space for change.</p><button type="button" class="service-link" data-service="Moving & rearranging">Browse moving helpers <span aria-hidden="true">↗</span></button></div></article>
+      </div>
+      <p class="service-disclaimer">Service categories are proposed for the marketplace. Individual helpers decide their services, rates, service areas and schedule.</p>
+    </section>
+
+
+    <section id="browse" class="section marketplace-section" aria-labelledby="browse-title">
+      <div class="shell">
+        <div class="section-head"><div><p class="kicker">DISCOVER YOUR HELPING HAND</p><h2 id="browse-title">People who can <em>make a difference.</em></h2></div><p id="browse-description">Search by what you need and where you live. This interactive directory currently uses fictional profiles and example rates.</p></div>
+        <div class="demo-label"><span class="demo-dot" aria-hidden="true"></span><strong>Marketplace status:</strong> <span id="live-status" role="status">Loading marketplace connection…</span> <span id="directory-disclaimer">Until the database is configured, helper profiles and rates are fictional examples.</span></div>
+        <div class="market-toolbar" aria-label="Search the example helper directory">
+          <div class="field"><label for="helper-category">I need help with</label><select id="helper-category"><option value="all">All household services</option><option value="Cleaning">Cleaning</option><option value="Childcare">Childcare</option><option value="Cooking">Cooking</option><option value="Gardening">Gardening</option><option value="Handyman">Handyman</option><option value="Moving & rearranging">Moving & rearranging</option></select></div>
+          <div class="field"><label for="helper-area">Location or suburb</label><input id="helper-area" type="search" placeholder="e.g. Randburg, Soweto" maxlength="80" autocomplete="off"></div>
+          <div class="field"><label id="helper-sort-label" for="helper-sort">Sort sample profiles</label><select id="helper-sort"><option value="recommended">Recommended examples</option><option value="rate-low">Lowest example rate</option><option value="rate-high">Highest example rate</option><option value="experience">Most experience</option></select></div>
+          <button type="button" id="reset-search" class="button button-outline reset-search">Reset filters</button>
+        </div>
+        <div class="market-summary"><p id="result-count" role="status" aria-live="polite">Showing example helpers</p><span id="market-summary-rate">Rates are sample amounts in ZAR, not offers or quotes.</span></div>
+        <div id="helper-grid" class="helper-grid" aria-live="off"></div>
+        <div class="empty-market" id="market-empty" hidden><h3>No matching example profiles</h3><p>Try another service or a nearby area to explore the sample directory.</p><button type="button" class="button button-dark" id="empty-reset">Clear filters</button></div>
+      </div>
+    </section>
+
+    <dialog id="helper-dialog" class="helper-dialog" aria-labelledby="helper-dialog-title">
+      <div class="helper-dialog-shell">
+        <div class="dialog-top"><span class="kicker">EXAMPLE HELPER PROFILE</span><button type="button" id="close-helper" class="icon-close" aria-label="Close helper profile">×</button></div>
+        <div id="helper-dialog-content"></div>
+      </div>
+    </dialog>
+
+    <section class="section fair-section" id="fair-wage" aria-labelledby="fair-title">
+      <div class="shell fair-layout">
+        <div><p class="kicker">FAIR WAGE &amp; TRUST</p><h2 id="fair-title">Fair work, <em>transparent pay.</em></h2><p>Plan a household budget and discuss compensation directly with your helper. Agree on tasks, travel, supplies, hours and payment before work begins.</p><ul class="check-list"><li>✓ Independent helpers choose their rates and availability.</li><li>✓ Listing approval is not a background check or a safety guarantee.</li><li>✓ Verify credentials and references independently, especially for childcare.</li></ul></div>
+        <div class="wage-calculator">
+          <h3>Household budget &amp; helper earnings simulator</h3><p>Explore an illustrative gross earnings estimate. No booking or payment is made.</p>
+          <div class="wage-field"><label for="rate-slider">Helper hourly rate (ZAR) <output id="rate-value" for="rate-slider">R180/hr</output></label><input type="range" id="rate-slider" min="140" max="350" step="10" value="180"><div class="range-limits"><span>R140/hr</span><span>R350/hr</span></div></div>
+          <div class="wage-field"><label for="hours-slider">Weekly service commitment <output id="hours-value" for="hours-slider">16 hrs/week</output></label><input type="range" id="hours-slider" min="4" max="40" step="2" value="16"><div class="range-limits"><span>4 hours</span><span>40 hours</span></div></div>
+          <div class="wage-results" aria-live="polite"><div><span>Weekly total</span><strong id="weekly-total">R2 880</strong></div><div><span>Estimated monthly total</span><strong id="monthly-total">R12 480</strong></div><div><span>Annual estimate</span><strong id="annual-total">R149 760</strong></div></div>
+          <p class="calculator-note">Monthly estimate = weekly total × 52 ÷ 12. Example rates are adjustable, not statutory wage advice or a quote. Expenses, tax, leave and applicable employment obligations are not included.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section how-section" id="how-it-works" aria-labelledby="how-title"><div class="shell"><div class="section-head"><div><p class="kicker">THE AUNTIE &amp; UNCLE WAY</p><h2 id="how-title">Simplicity, dignity &amp; <em>mutual trust.</em></h2></div><p>Households and independent helpers connect directly and discuss the work before agreeing to a booking.</p></div><div class="steps"><div class="step"><span class="step-num">01</span><div><h3>Discover local helpers</h3><p>Compare profiles, services, areas and indicative rates.</p><a href="#browse">Browse directory ↗</a></div></div><div class="step"><span class="step-num">02</span><div><h3>Request a booking</h3><p>Share the job requirements, date and estimated hours.</p><a href="#enquire">Prepare a request ↗</a></div></div><div class="step"><span class="step-num">03</span><div><h3>Agree on the details</h3><p>The helper reviews availability, scope and costs before accepting.</p><a href="#account">Manage bookings ↗</a></div></div><div class="step"><span class="step-num">04</span><div><h3>Offer your services</h3><p>Independent helpers decide which requests to accept.</p><a href="#join">Join as a helper ↗</a></div></div></div></div></section>
+
+    <section class="section shell about-section" id="about" aria-labelledby="about-title"><div class="about-visual"><div class="quote-decoration">“</div><p>Home is where the little things matter most.</p><span class="about-sparkles" aria-hidden="true">✳ ✳ ✳</span></div><div class="about-copy"><p class="kicker">A MORE HUMAN APPROACH</p><h2 id="about-title">More choice, <em>less guesswork.</em></h2><p>Auntie & Uncle is designed as a connection platform—not a household-services employer. Helpers operate independently, choose their own rates and accept or decline requests.</p><ul class="check-list"><li><span aria-hidden="true">✓</span> Compare helper profiles side by side</li><li><span aria-hidden="true">✓</span> Independent helpers set their own service terms</li><li><span aria-hidden="true">✓</span> No surprise checkout in this preview</li></ul><a href="#browse" class="button button-dark">Browse the directory <span aria-hidden="true">↗</span></a></div></section>
+
+
+    <section id="join" class="section join-section" aria-labelledby="join-title">
+      <div class="shell join-layout">
+        <div class="join-copy"><p class="kicker">FOR INDEPENDENT HELPERS</p><h2 id="join-title">Your skills. <em>Your livelihood.</em></h2>
+          <p>Clean homes, prepare meals, care for gardens or offer practical assistance? Auntie & Uncle aims to give independent helpers a way to present their skills and receive relevant booking requests.</p>
+          <div class="join-bullets"><div><span>01</span><p><strong>Create your profile</strong><small>Showcase your services, areas, experience and your chosen rate.</small></p></div><div><span>02</span><p><strong>Set your availability</strong><small>Control when you're available and which jobs to consider.</small></p></div><div><span>03</span><p><strong>Decide which requests to accept</strong><small>Review each booking request before agreeing to the work.</small></p></div></div>
+          <p class="join-safety">This is a prototype application. No account is created, profile published, identity verified or document uploaded.</p>
+          <figure class="join-photo"><img src="assets/home_cooking_table_1794245337850.jpg" alt="A beautifully prepared meal on a home dining table" loading="lazy"><figcaption>Made with care, at home.</figcaption></figure>
+        </div>
+        <div class="join-card"><div class="form-title"><h3>Preview your helper profile</h3><span class="pill-soft">Demo only</span></div>
+          <form id="helper-join-form" novalidate>
+            <div class="form-grid"><div class="field"><label for="join-name">Display name <span>*</span></label><input id="join-name" type="text" maxlength="55" placeholder="e.g. Thandi M." required></div><div class="field"><label for="join-service">Main service <span>*</span></label><select id="join-service" required><option value="">Select service</option><option>Cleaning</option><option>Childcare</option><option>Cooking</option><option>Gardening</option><option>Handyman</option><option>Moving & rearranging</option></select></div><div class="field"><label for="join-area">Service area <span>*</span></label><input id="join-area" type="text" maxlength="80" placeholder="e.g. Midrand" required></div><div class="field"><label for="join-rate">Indicative hourly rate (R) <span>*</span></label><input id="join-rate" type="number" min="1" max="100000" step="1" placeholder="e.g. 180" required></div><div class="field field-full"><label for="join-bio">What makes your service special? <span>*</span></label><textarea id="join-bio" rows="3" minlength="10" maxlength="320" placeholder="Introduce yourself and your approach to work..." required></textarea></div></div>
+            <p class="form-small" id="join-note">Describe your service in at least 10 characters. Do not enter an ID number, home address or sensitive details. In demo mode this preview is not sent or stored.</p><p id="join-error" class="form-error" role="alert" hidden></p><button type="submit" class="button button-dark form-submit">Preview my profile <span aria-hidden="true">↗</span></button>
+          </form><div id="join-preview" class="join-preview" hidden><p class="kicker">YOUR PROFILE PREVIEW</p><div id="join-preview-content"></div><p class="form-small">This profile is not public. It will disappear when you close or refresh the page.</p><button type="button" id="edit-join" class="button button-outline">Edit profile</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="account" aria-labelledby="account-title">
+      <div class="section-head"><div><p class="kicker">MARKETPLACE ACCOUNTS</p><h2 id="account-title">Your <em>account.</em></h2></div><p>Create an account or sign in to send real requests, apply as a helper and manage your bookings. Email verification may be required.</p></div>
+      <div class="account-layout">
+        <div class="account-box" id="account-anon">
+          <form id="account-form">
+            <div class="field"><label for="account-mode">I would like to</label><select id="account-mode"><option value="signin">Sign in</option><option value="signup">Create an account</option></select></div>
+            <div class="field" id="account-display-wrap" hidden><label for="account-display">Display name</label><input id="account-display" type="text" autocomplete="nickname" minlength="2" maxlength="80"></div>
+            <div class="field"><label for="account-email">Email address</label><input id="account-email" type="email" autocomplete="email" required maxlength="254"></div>
+            <div class="field"><label for="account-password">Password</label><input id="account-password" type="password" autocomplete="current-password" required minlength="10"></div>
+            <p id="account-error" class="form-error" role="alert" hidden></p>
+            <button id="account-submit" class="button button-dark" type="submit">Sign in</button>
+            <p class="form-small">Do not use this beta for sensitive documents, government ID numbers or full home addresses. No payments are collected.</p>
+          </form>
+        </div>
+        <div class="account-box account-workspace" id="account-signed-in" hidden>
+          <div class="workspace-intro">
+            <div><p class="kicker">YOUR AUNTIE & UNCLE WORKSPACE</p><h3>Welcome back</h3><p class="workspace-email">Signed in as <strong id="account-user"></strong></p></div>
+            <div class="account-actions"><button type="button" id="refresh-account" class="button button-outline button-small">Refresh data</button><button type="button" id="sign-out" class="button button-outline button-small">Sign out</button></div>
+          </div>
+          <section id="phase4-updates" class="phase4-updates" aria-labelledby="phase4-updates-heading" hidden>
+            <div class="dashboard-panel-heading"><div><h4 id="phase4-updates-heading">Account updates <span id="phase4-unread-label"></span></h4><p>Private, in-app activity notices. No emails or SMS are sent.</p></div>
+              <div class="booking-actions"><button type="button" id="phase4-refresh-updates" class="button button-outline button-small">Refresh updates</button><button type="button" id="phase4-read-updates" class="button button-outline button-small">Mark all as read</button></div>
+            </div><div id="phase4-updates-list" class="phase4-updates-list" aria-live="polite"></div>
+          </section>
+          <p id="phase4-setup-note" class="form-small" hidden>Availability and in-app updates are waiting for the Phase 4 database upgrade. Existing bookings still work.</p>
+          <div id="dashboard-stats" class="dashboard-stats" aria-label="Dashboard statistics"></div>
+          <div class="dashboard-tabs" role="tablist" aria-label="Dashboard views">
+            <button type="button" id="tab-customer" role="tab" data-dashboard="customer" aria-controls="dashboard-customer" aria-selected="true">My bookings</button>
+            <button type="button" id="tab-helper" role="tab" data-dashboard="helper" aria-controls="dashboard-helper" aria-selected="false">Helper workspace</button>
+            <button type="button" id="tab-admin" role="tab" data-dashboard="admin" aria-controls="dashboard-admin" aria-selected="false" hidden>Administration</button>
+          </div>
+          <div id="dashboard-customer" class="dashboard-panel" role="tabpanel" aria-labelledby="tab-customer">
+            <div class="dashboard-panel-heading"><div><h3>My booking requests</h3><p>Follow up on requests, view their status and cancel where permitted.</p></div>
+              <label class="dashboard-filter" for="customer-status-filter">Show <select id="customer-status-filter"><option value="all">All requests</option><option value="pending">Pending</option><option value="accepted">Accepted</option><option value="cancelled">Cancelled</option><option value="declined">Declined</option></select></label>
+            </div>
+            <section id="phase5b-customer-series" class="phase5b-series-area" hidden><div class="dashboard-panel-heading"><div><h4>Recurring requests</h4><p>View your series and cancel remaining future appointments if plans change.</p></div></div><div id="phase5b-customer-series-list" class="booking-list" aria-live="polite"></div></section>
+            <div id="customer-bookings" class="booking-list" aria-live="polite"></div>
+            <a href="#browse" class="button button-dark dashboard-link">Find a helper ↗</a>
+          </div>
+          <div id="dashboard-helper" class="dashboard-panel" role="tabpanel" aria-labelledby="tab-helper" hidden>
+            <div class="dashboard-panel-heading"><div><h3>Helper workspace</h3><p id="helper-application-state" class="form-small">Your helper application status will appear here.</p></div>
+              <a href="#join" id="helper-apply-link" class="button button-outline button-small">Apply as a helper</a>
+            </div>
+            <div id="helper-profile-panel" class="helper-profile-panel" hidden>
+              <div class="dashboard-panel-heading"><div><h4>My public profile</h4><p>Edit your listing. Changes to an approved listing require administrator review again.</p></div>
+                <button type="button" class="button button-outline button-small" id="toggle-profile-edit" aria-expanded="false" aria-controls="helper-profile-form">Edit profile</button>
+              </div>
+              <form id="helper-profile-form" class="helper-profile-form" hidden>
+                <div class="form-grid">
+                  <div class="field"><label for="edit-helper-name">Display name</label><input id="edit-helper-name" type="text" minlength="2" maxlength="80" required></div>
+                  <div class="field"><label for="edit-helper-service">Service</label><select id="edit-helper-service" required><option>Cleaning</option><option>Childcare</option><option>Cooking</option><option>Gardening</option><option>Handyman</option><option>Moving &amp; rearranging</option></select></div>
+                  <div class="field"><label for="edit-helper-area">Service area</label><input id="edit-helper-area" type="text" minlength="2" maxlength="80" required></div>
+                  <div class="field"><label for="edit-helper-rate">Indicative hourly rate (R)</label><input id="edit-helper-rate" type="number" min="1" max="100000" step="0.01" required></div>
+                  <div class="field"><label for="edit-helper-years">Years of experience</label><input id="edit-helper-years" type="number" min="0" max="70" step="1" required></div>
+                  <div class="field field-full"><label for="edit-helper-bio">Profile description (10–1000 characters)</label><textarea id="edit-helper-bio" minlength="10" maxlength="1000" rows="3" required></textarea></div>
+                </div>
+                <p id="edit-helper-error" class="form-error" role="alert" hidden></p>
+                <button type="submit" class="button button-dark button-small">Save profile changes</button>
+              </form>
+            </div>
+            <section id="phase4-calendar" class="phase4-calendar" aria-labelledby="phase4-calendar-heading" hidden>
+              <div class="dashboard-panel-heading"><div><h4 id="phase4-calendar-heading">Manage availability</h4><p>Mark whole days you cannot take new requests. Existing bookings are not cancelled automatically.</p></div>
+                <div class="booking-actions"><button id="phase4-prev-month" type="button" class="button button-outline button-small" aria-label="Previous month">←</button><strong id="phase4-month-label" aria-live="polite"></strong><button id="phase4-next-month" type="button" class="button button-outline button-small" aria-label="Next month">→</button></div>
+              </div>
+              <p class="form-small">Select a future date to block or unblock it. Dates marked unavailable prevent new booking requests for that date.</p>
+              <div class="phase4-weekdays" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+              <div id="phase4-day-grid" class="phase4-day-grid" role="group" aria-label="Availability dates"></div>
+              <p id="phase4-calendar-feedback" class="form-small" role="status"></p>
+            </section>
+            <div class="dashboard-panel-heading"><div><h4>Incoming booking requests</h4><p>Accept or decline pending requests. These are service enquiries, not payments.</p></div>
+              <label class="dashboard-filter" for="helper-status-filter">Show <select id="helper-status-filter"><option value="all">All requests</option><option value="pending">Pending</option><option value="accepted">Accepted</option><option value="declined">Declined</option><option value="cancelled">Cancelled</option></select></label>
+            </div>
+            <section id="phase5b-helper-series" class="phase5b-series-area" hidden><div class="dashboard-panel-heading"><div><h4>Recurring customer requests</h4><p>Each visit is a separate request. Accept or decline individual dates below.</p></div></div><div id="phase5b-helper-series-list" class="booking-list" aria-live="polite"></div></section>
+            <div id="provider-bookings" class="booking-list" aria-live="polite"></div>
+          </div>
+          <div id="dashboard-admin" class="dashboard-panel" role="tabpanel" aria-labelledby="tab-admin" hidden>
+            <h3>Marketplace administration</h3>
+            <p class="form-small">Approval publishes a helper listing. It is not identity verification or a background check.</p>
+            <div id="admin-panel" class="admin-sections">
+              <section aria-labelledby="admin-pending-heading"><div class="dashboard-panel-heading"><div><h4 id="admin-pending-heading">Applications awaiting review</h4><p>Approve or reject after performing appropriate verification.</p></div></div><div id="pending-applications" class="booking-list"></div></section>
+              <section aria-labelledby="admin-helpers-heading"><div class="dashboard-panel-heading"><div><h4 id="admin-helpers-heading">Helper listing management</h4><p>Review published or suspended listings. Suspending removes a listing from customer search.</p></div></div><div id="admin-helper-list" class="booking-list"></div></section>
+              <section aria-labelledby="admin-bookings-heading"><div class="dashboard-panel-heading"><div><h4 id="admin-bookings-heading">Recent booking activity</h4><p>Operational overview; customer contact details are not displayed here.</p></div></div><div id="admin-bookings" class="booking-list"></div></section>
+            </div>
+          </div>
+          <p id="dashboard-feedback" class="form-small" role="status" aria-live="polite"></p>
+        </div>
+        <div class="account-box account-info"><h3>Independent helpers, real choices</h3><p>Households can request a preferred helper. Helpers control whether they accept or decline. Neither party should assume a booking is confirmed until accepted.</p><p><strong>Important:</strong> Admin review of a listing is not a background check, identity guarantee or childcare clearance.</p><p id="account-success" role="status"></p></div>
+      </div>
+    </section>
+
+    <section class="section shell provider-demo" id="provider-demo" aria-labelledby="provider-demo-title">
+      <div class="section-head"><div><p class="kicker">WHAT'S NEXT FOR HELPERS</p><h2 id="provider-demo-title">See how requests <em>could work.</em></h2></div><p>Try a sample helper dashboard interaction below. This example is not connected to accounts, customers or live bookings.</p></div>
+      <div class="request-demo"><div class="request-demo-info"><span class="pill-soft">Sample incoming request</span><h3>Weekend home cleaning</h3><p>A household in Randburg needs a once-off 3-hour cleaning service on Saturday morning.</p><div class="request-demo-meta"><span>🧹 Cleaning</span><span>📍 Randburg</span><span>⏱ 3 hours</span></div></div><div class="request-demo-actions"><p class="status-row">Request status <strong id="demo-status">Pending your response</strong></p><div class="demo-buttons"><button type="button" id="demo-accept" class="button button-dark">Accept (demo)</button><button type="button" id="demo-decline" class="button button-outline">Decline (demo)</button></div><button type="button" id="demo-reset" class="reset-text">Reset demo</button><p class="demo-foot">A real booking would require authentication, availability checks and explicit confirmation.</p></div></div>
+    </section>
+
+    <section class="section shell enquire-section" id="enquire" aria-labelledby="enquire-title"><div class="enquiry-panel"><div class="enquiry-intro"><p class="kicker">REQUEST A HELPER</p><h2 id="enquire-title">Make your <em>request.</em></h2><p>Prepare an enquiry addressed to a helper you choose or make an open request. It is not submitted or confirmed in this prototype.</p><div class="enquiry-side-note"><span aria-hidden="true">✳</span><div><b>Talk to the person doing the work</b><p>Each independent helper agrees on availability, the final rate and work details before accepting a booking.</p></div></div></div>
+      <div class="form-frame"><form id="enquiry-form" novalidate>
+        <div class="selected-provider" id="selected-provider" hidden><span id="selected-provider-name"></span><button id="clear-provider" type="button" aria-label="Remove selected helper">×</button></div><p id="phase4-booking-availability" class="form-small" hidden></p><div class="form-grid"><div class="field"><label for="service">What do you need help with? <span>*</span></label><select id="service" name="service" required><option value="">Choose a service</option><option>Cleaning</option><option>Childcare</option><option>Cooking</option><option>Gardening</option><option>Handyman</option><option>Moving & rearranging</option></select></div><div class="field"><label for="frequency">How often?</label><select id="frequency" name="frequency"><option>One-time help</option><option>Weekly</option><option>Twice a week</option><option>Monthly</option><option>Not sure yet</option></select></div><div class="field"><label for="area">Suburb or area <span>*</span></label><input id="area" name="area" type="text" maxlength="80" autocomplete="address-level2" placeholder="e.g. Randburg" required></div><div class="field"><label for="date">Preferred date</label><input id="date" name="date" type="date"></div><div class="field"><label for="booking-time">Preferred start time</label><input id="booking-time" name="booking-time" type="time"></div><div class="field"><label for="booking-hours">Estimated hours</label><input id="booking-hours" name="booking-hours" type="number" min="1" max="24" step="0.5" placeholder="e.g. 3"></div><div class="field field-full"><label for="details">Tell us a little more <span>*</span></label><textarea id="details" name="details" rows="3" maxlength="650" required placeholder="What needs to be done? Include anything we should know."></textarea></div></div>
+        <section id="phase5b-recurring" class="phase5b-recurring" aria-labelledby="phase5b-heading" hidden>
+          <div class="booking-topline"><h3 id="phase5b-heading">Recurring service requests</h3><span class="status-chip">Limited series</span></div>
+          <label class="phase5b-toggle-label"><input id="phase5b-enable" type="checkbox"> Request a recurring series instead of a single appointment</label>
+          <div id="phase5b-options" hidden><div class="phase5b-options-grid">
+            <label for="phase5b-cadence">How often?<select id="phase5b-cadence"><option value="Weekly">Weekly</option><option value="Fortnightly">Every two weeks</option><option value="Monthly">Monthly</option></select></label>
+            <label for="phase5b-count">Number of visits (2–8)<input id="phase5b-count" type="number" min="2" max="8" step="1" value="4"></label>
+          </div><p class="form-small">Each visit becomes a separate Pending request. The helper must accept every date independently; no payment is collected.</p><div id="phase5b-preview" class="phase5b-preview" aria-live="polite"></div></div>
+        </section>
+        <p id="phase5b-setup-note" class="form-small" hidden>Recurring requests will be available after the Phase 5B migration.</p>
+        <section id="phase5-time-slots" class="phase5-slot-section" aria-labelledby="phase5-slots-heading" hidden>
+          <div class="booking-topline"><h3 id="phase5-slots-heading">Available appointment times</h3><span class="status-chip">South Africa time (SAST)</span></div>
+          <p class="form-small">Choose a suggested start time. Confirm the date and estimated duration first. Times can change before the helper accepts.</p>
+          <div id="phase5-slot-options" class="phase5-slots" role="group" aria-label="Suggested start times"></div>
+          <p id="phase5-slot-message" class="form-small" role="status" aria-live="polite"></p>
+        </section>
+        <p id="phase5-setup-note" class="form-small" hidden>Phase 5 advanced scheduling is awaiting database activation. Existing booking requests still work.</p>
+        <p class="form-small" id="enquiry-note">In demo mode this request is only previewed. Once connected, sign in and select an approved helper to send a request.</p><button class="button button-dark form-submit" type="submit">Prepare booking request <span aria-hidden="true">↗</span></button><p class="form-error" id="form-error" role="alert" hidden></p>
+      </form><div id="request-result" class="request-result" hidden><h3>Your request is ready</h3><p>Review and copy your request. No helper has received it, and no booking has been made.</p><pre id="request-preview"></pre><div class="result-actions"><button id="copy-request" type="button" class="button button-dark">Copy request</button><a id="whatsapp-request" class="button button-whatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>Send via WhatsApp ↗</a><button id="edit-request" type="button" class="button button-outline">Edit details</button></div><p id="copy-status" class="copy-status" role="status"></p></div></div>
+    </div></section>
+
+    <section class="section shell faq-section" id="faq" aria-labelledby="faq-title"><div><p class="kicker">GOOD TO KNOW</p><h2 id="faq-title">A few helpful <em>answers.</em></h2></div><div class="faqs"><details><summary>Are the helpers on this page real?<span aria-hidden="true">+</span></summary><p id="faq-real">No. The names, experience summaries, rates and locations shown are fictional examples designed to help you try the marketplace experience. No providers have been screened or onboarded on this prototype.</p></details><details><summary>Who sets the prices?<span aria-hidden="true">+</span></summary><p>In the proposed marketplace, each independent helper sets their own rates and agrees on a final quote with the household. Displayed sample rates are purely illustrative.</p></details><details><summary>Does sending a request confirm a booking?<span aria-hidden="true">+</span></summary><p id="faq-booking">No. In this prototype, requests can be previewed and copied but are not sent. In the future service, a helper would need to accept, confirm price and availability, and agree to the booking terms first.</p></details><details><summary>Will profiles be verified?<span aria-hidden="true">+</span></summary><p id="faq-verified">We plan to build a documented onboarding and screening process with suitable safeguards. No identity, background or qualification checks have been conducted for these fictional profiles. For childcare in particular, additional safety and qualification requirements must be established before launch.</p></details><details><summary>Do helpers work for Auntie & Uncle?<span aria-hidden="true">+</span></summary><p>The planned model is a marketplace for independently operating providers, not direct household-service employment. Actual legal arrangements, obligations and provider terms must be reviewed before launch.</p></details></div></section>
+
+    <section class="bottom-cta"><div class="shell bottom-inner"><div><p class="kicker">LIFE GETS BUSY. WE GET IT.</p><h2>Find your kind of <em>help.</em></h2></div><a href="#browse" class="button button-peach">Explore example helpers <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer"><div class="shell"><div class="footer-main"><div><a class="brand footer-brand" href="#top"><span class="brand-icon" aria-hidden="true">✳</span><span class="brand-name">auntie <span>&</span> uncle<small>YOUR HOME. YOUR PEOPLE.</small></span></a><p>A space for South African households and independent helpers to find each other.</p></div><div><h3>Explore</h3><a href="#services">Service categories</a><a href="#browse">Example helpers</a><a href="#how-it-works">How it works</a></div><div><h3>Get started</h3><a href="#enquire">Prepare a request</a><a href="#join">Become a helper</a><a href="#faq">Common questions</a></div><div><h3>A note about this preview</h3><p class="footer-note" id="footer-disclaimer">All sample helper profiles and rates are fictional. The demo does not create accounts, verify identities, save applications, send requests, confirm bookings, charge payments or list real people.</p></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Auntie & Uncle.</span><span>Made with care for South African homes.</span><a href="#top">Back to top ↑</a></div></div></footer>
+</body>
+</html>

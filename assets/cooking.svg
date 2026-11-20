@@ -1,0 +1,29 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="ck-pot" x1="12" y1="28" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#EA580C" />
+        <stop offset="1" stop-color="#9A3412" />
+      </linearGradient>
+      <linearGradient id="ck-lid" x1="16" y1="22" x2="48" y2="28" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#C2410C" />
+        <stop offset="1" stop-color="#7C2D12" />
+      </linearGradient>
+    </defs>
+    <g>
+
+      <path d="M26 14C24 18 28 20 26 24" stroke="#D1D5DB" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M34 10C32 14 36 17 34 22" stroke="#E5E7EB" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M42 15C40 19 44 21 42 25" stroke="#D1D5DB" stroke-width="2.5" stroke-linecap="round" />
+
+      <rect x="29" y="19" width="6" height="4" rx="2" fill="#7C2D12" />
+
+      <ellipse cx="32" cy="27" rx="18" ry="4" fill="url(#ck-lid)" />
+
+      <path d="M14 28C14 28 16 52 32 52C48 52 50 28 50 28H14Z" fill="url(#ck-pot)" />
+
+      <path d="M11 32C9 32 8 34 8 36C8 38 9 40 11 40" stroke="#7C2D12" stroke-width="3" stroke-linecap="round" />
+      <path d="M53 32C55 32 56 34 56 36C56 38 55 40 53 40" stroke="#7C2D12" stroke-width="3" stroke-linecap="round" />
+
+      <ellipse cx="32" cy="29" rx="16" ry="2" fill="#FFFFFF" fill-opacity="0.2" />
+    </g>
+  </svg>

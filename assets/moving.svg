@@ -1,0 +1,26 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="mv-top" x1="32" y1="14" x2="32" y2="30" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FBBF24" />
+        <stop offset="1" stop-color="#D97706" />
+      </linearGradient>
+      <linearGradient id="mv-left" x1="14" y1="26" x2="32" y2="52" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#D97706" />
+        <stop offset="1" stop-color="#B45309" />
+      </linearGradient>
+      <linearGradient id="mv-right" x1="32" y1="26" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#B45309" />
+        <stop offset="1" stop-color="#78350F" />
+      </linearGradient>
+    </defs>
+    <g>
+
+      <path d="M32 14L49 24L32 34L15 24L32 14Z" fill="url(#mv-top)" />
+
+      <path d="M15 24L32 34V52L15 42V24Z" fill="url(#mv-left)" />
+
+      <path d="M32 34L49 24V42L32 52V34Z" fill="url(#mv-right)" />
+
+      <path d="M26 17.5L43 27.5L38 30.5L21 20.5L26 17.5Z" fill="#FDE68A" fill-opacity="0.8" />
+    </g>
+  </svg>
