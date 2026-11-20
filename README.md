@@ -81,9 +81,10 @@ Smoke tests (requires Python Playwright and Chromium):
 
 ```bash
 python tests/smoke.py
+python tests/redesign_smoke.py
 ```
 
-The smoke tests validate the offline demo UI, not the live remote database or its row-level security. After applying the migration, test customer A vs customer B, application owner vs another owner, admin vs non-admin, and helper statuses before opening registrations to the public.
+The smoke tests validate the offline demo UI, not the live remote database or its row-level security. The redesign test starts a local HTTP server, blocks production requests, and tests discovery, booking preview, calculator, palettes, navigation, images, eight viewport widths and page errors. GitHub Actions uploads screenshots to its run artifact. After applying the migration, test customer A vs customer B, application owner vs another owner, admin vs non-admin, and helper statuses before opening registrations to the public.
 
 ## Security and privacy notes
 

@@ -7,6 +7,7 @@ import asyncio
 from playwright.async_api import async_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
+SCREENSHOTS = ROOT / '_screenshots'
 
 
 class QuietHandler(SimpleHTTPRequestHandler):
@@ -15,6 +16,7 @@ class QuietHandler(SimpleHTTPRequestHandler):
 
 
 async def run():
+    SCREENSHOTS.mkdir(exist_ok=True)
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(ROOT)))
     Thread(target=server.serve_forever, daemon=True).start()
     url = f'http://127.0.0.1:{server.server_port}/'
@@ -102,9 +104,9 @@ async def run():
                     await page.locator('#palette-close').click()
                     assert await page.locator('#menu-toggle').get_attribute('aria-expanded') == 'false'
                 if width in (390, 1440):
-                    await page.screenshot(path=str(ROOT.parent / f'auntie-v2-{width}.png'))
+                    await page.screenshot(path=str(SCREENSHOTS / f'auntie-v2-{width}.png'))
                     await page.locator('#browse').scroll_into_view_if_needed()
-                    await page.screenshot(path=str(ROOT.parent / f'auntie-v2-directory-{width}.png'))
+                    await page.screenshot(path=str(SCREENSHOTS / f'auntie-v2-directory-{width}.png'))
             assert not errors, errors
             await browser.close()
             print('PASS: hero search, suburb shortcuts, 6 SVG assets, hero photo, calculator, five themes, persistence, keyboard close, mobile nav, 8 viewport widths, no JS errors')

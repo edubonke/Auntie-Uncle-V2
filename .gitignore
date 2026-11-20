@@ -6,4 +6,5 @@ supabase/.branches/
 !.env.example
 node_modules/
 _site/
+_screenshots/
 .DS_Store

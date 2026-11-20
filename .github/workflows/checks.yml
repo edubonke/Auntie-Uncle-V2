@@ -37,5 +37,5 @@ jobs:
         if: always()
         with:
           name: redesign-screenshots
-          path: ../auntie-v2-*.png
+          path: _screenshots/auntie-v2-*.png
           if-no-files-found: ignore
